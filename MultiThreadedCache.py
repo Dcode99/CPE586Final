@@ -17,7 +17,7 @@ HOST = '127.0.0.1'
 PORT = 32007
 ThreadCount = 0
 serverSocket.bind((HOST, PORT))
-serverSocket.listen()
+serverSocket.listen(5)
 
 # Adding Multiple Client Functionality
 def multi_threaded_client(connection):
