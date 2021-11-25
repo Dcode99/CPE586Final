@@ -2,6 +2,10 @@
 from socket import *
 import requests
 
+# import thread module
+from _thread import *
+import threading
+
 # create a cache
 cache = []
 
