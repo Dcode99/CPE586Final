@@ -9,6 +9,10 @@ Instructions to run:
   - curl http://localhost:32007/localhost:32008/helloworld.html
 
 Use the make file that is included to do consistent testing with speed stattiscs via curl.
-  Make commands:
-    test: runs the curl commands on all of the provided files.
-    clean: removes all of the downloaded files for a cleaner directory.
+  - Make commands:
+    - test: runs the curl commands on all of the provided files.
+    - clean: removes all of the downloaded files for a cleaner directory.
+
+Video file used for testing found at: https://mixkit.co/free-stock-video/going-down-a-curved-highway-down-a-mountain-41576/
+  - Save file as Video.mp4
+  - Then uncomment in makefile
