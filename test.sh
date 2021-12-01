@@ -44,8 +44,6 @@ reset=`tput sgr0`
 
 	echo "$blue Pulled test.mp4$reset"
 
-
-
 	# this is code I (Andrew Donovan) made for another class
 
 	# https://linuxcommand.org/lc3_man_pages/readh.html
@@ -85,6 +83,6 @@ reset=`tput sgr0`
 
 
 
-# used to clean up the servers
+# allow a second
 
 sleep 1 

@@ -6,6 +6,9 @@ Instructions to run:
   - ./test.sh
     - sets up servers and creates the needed files 
     - cleans both the processes and tmp files
+      - Based on user input 
+      - Has nice colored output
+      
   - Uses Curl to test networking speed and statisics 
     - Prints to terminal command line
 
