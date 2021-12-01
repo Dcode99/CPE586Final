@@ -17,7 +17,7 @@ serverSocket.listen()
 
 # Server should be up and running and listening to the incoming connections
 while True:
-    print('Ready to serve...')
+    print('Ready to serve (Main)...')
 
     # Set up a new connection from the client
     connectionSocket, addr = serverSocket.accept()  # Fill in start             #Fill in end

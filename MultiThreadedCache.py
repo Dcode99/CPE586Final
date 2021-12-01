@@ -99,7 +99,7 @@ def multi_threaded_client(connection):
 
 # Server should be up and running and listening to the incoming connections
 while True:
-    print('Ready to serve...')
+    print('Ready to serve (Cache)...')
 
     # Set up a new connection from the client
     connectionSocket, addr = serverSocket.accept()

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# This was written to make standard network testing 
+# and to make it easier to make changes to the code.
+
 
 red=`tput setaf 1`
 green=`tput setaf 2`
@@ -53,8 +56,6 @@ reset=`tput sgr0`
 
 	# https://stackoverflow.com/questions/5542016/bash-user-input-if
 	# found this and its great 
-
-	# this is done to make user's space more avaible and easier to tear down.
 
 	case $clean_test in
 
