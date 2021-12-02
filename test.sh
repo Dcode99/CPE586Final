@@ -16,7 +16,7 @@ reset=`tput sgr0`
 	sleep 1
 
 	python3 MultiThreadedMain.py&
-	sleep 2
+	sleep 1
 
 
 	fallocate -l 1G test.mp4 # used to not waste space if needed.
@@ -24,26 +24,38 @@ reset=`tput sgr0`
 	echo "$blue Files created redy to test $reset"
 
 	curl http://localhost:32007/localhost:32008/helloworld.html --output tmp.html
+
+	sleep 1
 		
 	echo "$blue Pulled helloworld.html$reset"
 
 	curl http://localhost:32007/localhost:32008/image.png --output tmp.png
+
+	sleep 1
 		
 	echo "$blue Pulled image.png$reset"
 
 	curl http://localhost:32007/localhost:32008/Test.png --output tmpT.png
+
+	sleep 1
 		
 	echo "$blue Pulled Test.png$reset"
 
 	curl http://localhost:32007/localhost:32008/testing.jfif --output tmp.jfif
+
+	sleep 1
 		
 	echo "$blue Pulled testing.jfif$reset"
 
 	curl http://localhost:32007/localhost:32008/video.mp4 --output tmp.mp4
+
+	sleep 1
 		
 	echo "$blue Pulled video.mp4$reset"
 
 	curl http://localhost:32007/localhost:32008/test.mp4 --output large.mp4
+
+	sleep 1
 
 	echo "$blue Pulled test.mp4$reset"
 

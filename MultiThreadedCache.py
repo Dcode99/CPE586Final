@@ -58,7 +58,10 @@ def multi_threaded_client(connection):
                 connectionSocket.send("\r\n".encode())
 
                 # Close the client connection socket
+                # Thread count should drop on the close
+                
                 connectionSocket.close()
+                break
 
         # if data isn't cached ask server for data
         if not cached:
@@ -81,20 +84,33 @@ def multi_threaded_client(connection):
                 connectionSocket.send("\r\n".encode())
 
                 # Close the client connection socket
+                # Thread count should drop on the close
+                
                 connectionSocket.close()
+                break
             else:
                 # send 404 not found if status is not okay
                 connectionSocket.send("HTTP/1.1 404 Not found\r\n\r\n".encode())
 
                 # Close the client connection socket
-                connectionSocket.close()
 
-      except IOError:
+                # Thread count should drop on the close
+                
+                connectionSocket.close()
+                break
+
+
+      except IOError as err:
+        print("IOError : {0}".format(err))
+
         # Send HTTP response message for file not found
-        connectionSocket.send("HTTP/1.1 404 Not found\r\n\r\n".encode())
+       # connectionSocket.send("HTTP/1.1 404 Not found\r\n\r\n".encode())
 
         # Close the client connection socket
+        # Thread count should drop on the close
+        
         connectionSocket.close()
+        break
 
 
 # Server should be up and running and listening to the incoming connections
@@ -105,8 +121,14 @@ while True:
     connectionSocket, addr = serverSocket.accept()
     
     # Thread section of main loop
+    ThreadCount = ThreadCount + 1
+    
     start_new_thread(multi_threaded_client, (connectionSocket, ))
-    ThreadCount += 1
+    
+    ThreadCount = ThreadCount - 1
+
+    # new thread is started 
+    
     print('Thread Number: ' + str(ThreadCount))
 
 serverSocket.close()
