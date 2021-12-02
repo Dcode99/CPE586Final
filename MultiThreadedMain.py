@@ -38,22 +38,26 @@ while True:
         # a character '\', we read the path from the second character
         f = open(filename[1:], "rb")
 
-        # Store the entire content of the requested file in a temporary buffer
-        outputdata = f.read()
-
-        # close the file
-        f.close()
-
         # Send the HTTP response header line to the connection socket
         # Connection is successful if it gets here
         connectionSocket.send("HTTP/1.1 200 OK\r\n\r\n".encode())
 
-        # Send the content of the requested file to the connection socket
-        connectionSocket.sendall(outputdata)
         # for i in range(0, len(outputdata)):
         #    connectionSocket.send(outputdata[i])
+        
+        # loop to send data from the file in chunks
+        for data in f:
+            # Store up to 1024 bytes of content of the requested file in a temporary buffer
+            outputdata = f.read(1024)
+            # Send the content of the requested file to the connection socket
+            connectionSocket.sendall(outputdata)
+            
+        
         connectionSocket.send("\r\n".encode())
 
+        # close the file
+        f.close()
+        
         # Close the client connection socket
         connectionSocket.close()
 
