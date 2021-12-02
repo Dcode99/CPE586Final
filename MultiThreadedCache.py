@@ -61,7 +61,7 @@ def multi_threaded_client(connection):
                 # Thread count should drop on the close
                 
                 connectionSocket.close()
-                break
+                return
 
         # if data isn't cached ask server for data
         if not cached:
@@ -87,7 +87,8 @@ def multi_threaded_client(connection):
                 # Thread count should drop on the close
                 
                 connectionSocket.close()
-                break
+                return
+
             else:
                 # send 404 not found if status is not okay
                 connectionSocket.send("HTTP/1.1 404 Not found\r\n\r\n".encode())
@@ -97,20 +98,16 @@ def multi_threaded_client(connection):
                 # Thread count should drop on the close
                 
                 connectionSocket.close()
-                break
+                return
 
 
       except IOError as err:
         print("IOError : {0}".format(err))
 
-        # Send HTTP response message for file not found
-       # connectionSocket.send("HTTP/1.1 404 Not found\r\n\r\n".encode())
-
-        # Close the client connection socket
-        # Thread count should drop on the close
-        
+        # print error on server side 
+       
         connectionSocket.close()
-        break
+        return
 
 
 # Server should be up and running and listening to the incoming connections
@@ -126,6 +123,9 @@ while True:
     start_new_thread(multi_threaded_client, (connectionSocket, ))
     
     ThreadCount = ThreadCount - 1
+
+    # should be zero if single client 
+    # left for live inspcetion of the running code
 
     # new thread is started 
     
