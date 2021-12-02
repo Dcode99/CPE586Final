@@ -5,12 +5,16 @@ Creating a server and client web system for users to download and upload videos,
 Instructions to run:
   - ./test.sh
     - sets up servers and creates the needed files 
-    - cleans both the processes and tmp files
-      - Based on user input 
+    - cleans both the server processes and tmp files
+      - This is based on user input 
+        - If y or Y it deletes test files and kills the server process's
+        - If n or N it does not delete test files and kills the server process's
+        - All other inputs does not not delete test files and kills the server process's
       - Has nice colored output
       
   - Uses Curl to test networking speed and statisics 
-    - Prints to terminal command line
+    - Prints to terminal
+    - With Network Statistics
 
     ### WARNING THIS SCRIPT USES PKILL ON PYTHON3 ###
 
