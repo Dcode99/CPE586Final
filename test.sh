@@ -12,14 +12,14 @@ reset=`tput sgr0`
 
 	# set up servers sleep used to help with the ports
 	# and with the connections
-	python3 MultiThreadedCache.py&
-	sleep 1
+	#python3 MultiThreadedCache.py&
+	#sleep 1
 
-	python3 MultiThreadedMain.py&
-	sleep 1
+	#python3 MultiThreadedMain.py&
+	#sleep 1
 
-
-	fallocate -l 1G test.mp4 # used to not waste space if needed.
+	# generate a random human readable file
+	#base64 /dev/urandom | head -c 100000000 > file.txt
 
 	echo "$blue Files created redy to test $reset"
 
@@ -59,6 +59,11 @@ reset=`tput sgr0`
 
 	echo "$blue Pulled test.mp4$reset"
 
+
+	curl http://localhost:32007/localhost:32008/file.txt --output rev.txt --trace-ascii trace.txt
+
+	echo "$blue Pulled file.txt $reset $red 100MB $reset"
+
 	# this is code I (Andrew Donovan) made for another class
 
 	# https://linuxcommand.org/lc3_man_pages/readh.html
@@ -78,6 +83,7 @@ reset=`tput sgr0`
 			rm tmp.mp4
 			rm large.mp4
 			rm test.mp4 
+			rm rev.txt
 			# fallocate can get compressed by the kernal so rebuilding 
 			# each time is neccasy to get proper timing
 			
